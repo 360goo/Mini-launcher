@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.minilauncher.tv'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.minilauncher.tv'
+        minSdk 21
+        targetSdk 35
+        versionCode 1
+        versionName '1.0'
+    }
+
+    // Optional fixed signing key, supplied by CI (GitHub secrets) or local env vars.
+    // Without it the release APK is signed with the standard debug key.
+    def ksFile = System.getenv('SIGNING_KEYSTORE_FILE')
+    def hasKey = ksFile != null && file(ksFile).exists()
+    signingConfigs {
+        if (hasKey) {
+            launcher {
+                storeFile file(ksFile)
+                storePassword System.getenv('SIGNING_PASSWORD')
+                keyAlias System.getenv('SIGNING_KEY_ALIAS') ?: 'minilauncher'
+                keyPassword System.getenv('SIGNING_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            signingConfig hasKey ? signingConfigs.launcher : signingConfigs.debug
+        }
+    }
+
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
