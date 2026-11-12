@@ -30,5 +30,773 @@
   "variantName": "Obstacles",
   "icon": "🐍",
   "color": "#2E8B57"
+ },
+ {
+  "id": "blocks",
+  "variant": 0,
+  "title": "Falling Blocks",
+  "variantName": "Classic",
+  "icon": "🧱",
+  "color": "#5B4BC4"
+ },
+ {
+  "id": "blocks",
+  "variant": 1,
+  "title": "Falling Blocks",
+  "variantName": "Fast",
+  "icon": "🧱",
+  "color": "#5B4BC4"
+ },
+ {
+  "id": "blocks",
+  "variant": 2,
+  "title": "Falling Blocks",
+  "variantName": "Narrow Well",
+  "icon": "🧱",
+  "color": "#5B4BC4"
+ },
+ {
+  "id": "bricks",
+  "variant": 0,
+  "title": "Brick Breaker",
+  "variantName": "Level 1",
+  "icon": "🏓",
+  "color": "#C2410C"
+ },
+ {
+  "id": "bricks",
+  "variant": 1,
+  "title": "Brick Breaker",
+  "variantName": "Level 2",
+  "icon": "🏓",
+  "color": "#C2410C"
+ },
+ {
+  "id": "bricks",
+  "variant": 2,
+  "title": "Brick Breaker",
+  "variantName": "Level 3",
+  "icon": "🏓",
+  "color": "#C2410C"
+ },
+ {
+  "id": "bricks",
+  "variant": 3,
+  "title": "Brick Breaker",
+  "variantName": "Level 4",
+  "icon": "🏓",
+  "color": "#C2410C"
+ },
+ {
+  "id": "bricks",
+  "variant": 4,
+  "title": "Brick Breaker",
+  "variantName": "Level 5",
+  "icon": "🏓",
+  "color": "#C2410C"
+ },
+ {
+  "id": "paddle",
+  "variant": 0,
+  "title": "Paddle Ball",
+  "variantName": "Easy",
+  "icon": "🎾",
+  "color": "#0E7490"
+ },
+ {
+  "id": "paddle",
+  "variant": 1,
+  "title": "Paddle Ball",
+  "variantName": "Normal",
+  "icon": "🎾",
+  "color": "#0E7490"
+ },
+ {
+  "id": "paddle",
+  "variant": 2,
+  "title": "Paddle Ball",
+  "variantName": "Hard",
+  "icon": "🎾",
+  "color": "#0E7490"
+ },
+ {
+  "id": "flap",
+  "variant": 0,
+  "title": "Flappy Flight",
+  "variantName": "Normal",
+  "icon": "🐤",
+  "color": "#CA8A04"
+ },
+ {
+  "id": "flap",
+  "variant": 1,
+  "title": "Flappy Flight",
+  "variantName": "Hard",
+  "icon": "🐤",
+  "color": "#CA8A04"
+ },
+ {
+  "id": "shooter",
+  "variant": 0,
+  "title": "Space Shooter",
+  "variantName": "Normal",
+  "icon": "🚀",
+  "color": "#1E3A8A"
+ },
+ {
+  "id": "shooter",
+  "variant": 1,
+  "title": "Space Shooter",
+  "variantName": "Hard",
+  "icon": "🚀",
+  "color": "#1E3A8A"
+ },
+ {
+  "id": "rocks",
+  "variant": 0,
+  "title": "Space Rocks",
+  "variantName": "Normal",
+  "icon": "☄️",
+  "color": "#44403C"
+ },
+ {
+  "id": "rocks",
+  "variant": 1,
+  "title": "Space Rocks",
+  "variantName": "Hard",
+  "icon": "☄️",
+  "color": "#44403C"
+ },
+ {
+  "id": "stack",
+  "variant": 0,
+  "title": "Stack Tower",
+  "variantName": "Normal",
+  "icon": "🏗️",
+  "color": "#BE185D"
+ },
+ {
+  "id": "stack",
+  "variant": 1,
+  "title": "Stack Tower",
+  "variantName": "Fast",
+  "icon": "🏗️",
+  "color": "#BE185D"
+ },
+ {
+  "id": "runner",
+  "variant": 0,
+  "title": "Endless Runner",
+  "variantName": "Day",
+  "icon": "🏃",
+  "color": "#4D7C0F"
+ },
+ {
+  "id": "runner",
+  "variant": 1,
+  "title": "Endless Runner",
+  "variantName": "Night",
+  "icon": "🏃",
+  "color": "#4D7C0F"
+ },
+ {
+  "id": "racer",
+  "variant": 0,
+  "title": "Lane Racer",
+  "variantName": "3 Lanes",
+  "icon": "🏎️",
+  "color": "#B91C1C"
+ },
+ {
+  "id": "racer",
+  "variant": 1,
+  "title": "Lane Racer",
+  "variantName": "5 Lanes",
+  "icon": "🏎️",
+  "color": "#B91C1C"
+ },
+ {
+  "id": "crossing",
+  "variant": 0,
+  "title": "Road Crossing",
+  "variantName": "Normal",
+  "icon": "🐸",
+  "color": "#15803D"
+ },
+ {
+  "id": "crossing",
+  "variant": 1,
+  "title": "Road Crossing",
+  "variantName": "Hard",
+  "icon": "🐸",
+  "color": "#15803D"
+ },
+ {
+  "id": "merge",
+  "variant": 0,
+  "title": "Merge Tiles",
+  "variantName": "3×3",
+  "icon": "🔢",
+  "color": "#C98B2B"
+ },
+ {
+  "id": "merge",
+  "variant": 1,
+  "title": "Merge Tiles",
+  "variantName": "4×4",
+  "icon": "🔢",
+  "color": "#C98B2B"
+ },
+ {
+  "id": "merge",
+  "variant": 2,
+  "title": "Merge Tiles",
+  "variantName": "5×5",
+  "icon": "🔢",
+  "color": "#C98B2B"
+ },
+ {
+  "id": "merge",
+  "variant": 3,
+  "title": "Merge Tiles",
+  "variantName": "6×6",
+  "icon": "🔢",
+  "color": "#C98B2B"
+ },
+ {
+  "id": "mines",
+  "variant": 0,
+  "title": "Mines",
+  "variantName": "Easy",
+  "icon": "💣",
+  "color": "#5A6270"
+ },
+ {
+  "id": "mines",
+  "variant": 1,
+  "title": "Mines",
+  "variantName": "Medium",
+  "icon": "💣",
+  "color": "#5A6270"
+ },
+ {
+  "id": "mines",
+  "variant": 2,
+  "title": "Mines",
+  "variantName": "Hard",
+  "icon": "💣",
+  "color": "#5A6270"
+ },
+ {
+  "id": "mines",
+  "variant": 3,
+  "title": "Mines",
+  "variantName": "Expert",
+  "icon": "💣",
+  "color": "#5A6270"
+ },
+ {
+  "id": "sudoku",
+  "variant": 0,
+  "title": "Sudoku",
+  "variantName": "Easy",
+  "icon": "✏️",
+  "color": "#3E6FB0"
+ },
+ {
+  "id": "sudoku",
+  "variant": 1,
+  "title": "Sudoku",
+  "variantName": "Medium",
+  "icon": "✏️",
+  "color": "#3E6FB0"
+ },
+ {
+  "id": "sudoku",
+  "variant": 2,
+  "title": "Sudoku",
+  "variantName": "Hard",
+  "icon": "✏️",
+  "color": "#3E6FB0"
+ },
+ {
+  "id": "sudoku",
+  "variant": 3,
+  "title": "Sudoku",
+  "variantName": "Expert",
+  "icon": "✏️",
+  "color": "#3E6FB0"
+ },
+ {
+  "id": "slide",
+  "variant": 0,
+  "title": "Sliding Puzzle",
+  "variantName": "3×3",
+  "icon": "🧩",
+  "color": "#8E5BC9"
+ },
+ {
+  "id": "slide",
+  "variant": 1,
+  "title": "Sliding Puzzle",
+  "variantName": "4×4",
+  "icon": "🧩",
+  "color": "#8E5BC9"
+ },
+ {
+  "id": "slide",
+  "variant": 2,
+  "title": "Sliding Puzzle",
+  "variantName": "5×5",
+  "icon": "🧩",
+  "color": "#8E5BC9"
+ },
+ {
+  "id": "slide",
+  "variant": 3,
+  "title": "Sliding Puzzle",
+  "variantName": "6×6",
+  "icon": "🧩",
+  "color": "#8E5BC9"
+ },
+ {
+  "id": "lights",
+  "variant": 0,
+  "title": "Light Switch",
+  "variantName": "5×5",
+  "icon": "💡",
+  "color": "#B8962E"
+ },
+ {
+  "id": "lights",
+  "variant": 1,
+  "title": "Light Switch",
+  "variantName": "6×6",
+  "icon": "💡",
+  "color": "#B8962E"
+ },
+ {
+  "id": "lights",
+  "variant": 2,
+  "title": "Light Switch",
+  "variantName": "7×7",
+  "icon": "💡",
+  "color": "#B8962E"
+ },
+ {
+  "id": "maze",
+  "variant": 0,
+  "title": "Maze",
+  "variantName": "Small",
+  "icon": "🌀",
+  "color": "#2F7D8C"
+ },
+ {
+  "id": "maze",
+  "variant": 1,
+  "title": "Maze",
+  "variantName": "Medium",
+  "icon": "🌀",
+  "color": "#2F7D8C"
+ },
+ {
+  "id": "maze",
+  "variant": 2,
+  "title": "Maze",
+  "variantName": "Large",
+  "icon": "🌀",
+  "color": "#2F7D8C"
+ },
+ {
+  "id": "maze",
+  "variant": 3,
+  "title": "Maze",
+  "variantName": "Huge",
+  "icon": "🌀",
+  "color": "#2F7D8C"
+ },
+ {
+  "id": "flood",
+  "variant": 0,
+  "title": "Flood Fill",
+  "variantName": "10×10",
+  "icon": "🌊",
+  "color": "#2B6CB0"
+ },
+ {
+  "id": "flood",
+  "variant": 1,
+  "title": "Flood Fill",
+  "variantName": "14×14",
+  "icon": "🌊",
+  "color": "#2B6CB0"
+ },
+ {
+  "id": "flood",
+  "variant": 2,
+  "title": "Flood Fill",
+  "variantName": "18×18",
+  "icon": "🌊",
+  "color": "#2B6CB0"
+ },
+ {
+  "id": "collapse",
+  "variant": 0,
+  "title": "Tile Collapse",
+  "variantName": "Small",
+  "icon": "🟥",
+  "color": "#B04A4A"
+ },
+ {
+  "id": "collapse",
+  "variant": 1,
+  "title": "Tile Collapse",
+  "variantName": "Large",
+  "icon": "🟥",
+  "color": "#B04A4A"
+ },
+ {
+  "id": "tictactoe",
+  "variant": 0,
+  "title": "Tic-Tac-Toe",
+  "variantName": "vs CPU Easy",
+  "icon": "❌",
+  "color": "#C0392B"
+ },
+ {
+  "id": "tictactoe",
+  "variant": 1,
+  "title": "Tic-Tac-Toe",
+  "variantName": "vs CPU Hard",
+  "icon": "❌",
+  "color": "#C0392B"
+ },
+ {
+  "id": "tictactoe",
+  "variant": 2,
+  "title": "Tic-Tac-Toe",
+  "variantName": "2 Players",
+  "icon": "❌",
+  "color": "#C0392B"
+ },
+ {
+  "id": "four",
+  "variant": 0,
+  "title": "Four in a Row",
+  "variantName": "vs CPU Easy",
+  "icon": "🔴",
+  "color": "#1F5FBF"
+ },
+ {
+  "id": "four",
+  "variant": 1,
+  "title": "Four in a Row",
+  "variantName": "vs CPU Hard",
+  "icon": "🔴",
+  "color": "#1F5FBF"
+ },
+ {
+  "id": "four",
+  "variant": 2,
+  "title": "Four in a Row",
+  "variantName": "2 Players",
+  "icon": "🔴",
+  "color": "#1F5FBF"
+ },
+ {
+  "id": "reversi",
+  "variant": 0,
+  "title": "Reversi",
+  "variantName": "vs CPU Easy",
+  "icon": "⚫",
+  "color": "#1E7A46"
+ },
+ {
+  "id": "reversi",
+  "variant": 1,
+  "title": "Reversi",
+  "variantName": "vs CPU Hard",
+  "icon": "⚫",
+  "color": "#1E7A46"
+ },
+ {
+  "id": "reversi",
+  "variant": 2,
+  "title": "Reversi",
+  "variantName": "2 Players",
+  "icon": "⚫",
+  "color": "#1E7A46"
+ },
+ {
+  "id": "checkers",
+  "variant": 0,
+  "title": "Checkers",
+  "variantName": "vs CPU",
+  "icon": "🔵",
+  "color": "#8E5A2B"
+ },
+ {
+  "id": "checkers",
+  "variant": 1,
+  "title": "Checkers",
+  "variantName": "2 Players",
+  "icon": "🔵",
+  "color": "#8E5A2B"
+ },
+ {
+  "id": "gomoku",
+  "variant": 0,
+  "title": "Five in a Row",
+  "variantName": "vs CPU",
+  "icon": "⚪",
+  "color": "#B7791F"
+ },
+ {
+  "id": "gomoku",
+  "variant": 1,
+  "title": "Five in a Row",
+  "variantName": "2 Players",
+  "icon": "⚪",
+  "color": "#B7791F"
+ },
+ {
+  "id": "memory",
+  "variant": 0,
+  "title": "Memory Match",
+  "variantName": "4×3",
+  "icon": "🃏",
+  "color": "#7D3C98"
+ },
+ {
+  "id": "memory",
+  "variant": 1,
+  "title": "Memory Match",
+  "variantName": "4×4",
+  "icon": "🃏",
+  "color": "#7D3C98"
+ },
+ {
+  "id": "memory",
+  "variant": 2,
+  "title": "Memory Match",
+  "variantName": "6×4",
+  "icon": "🃏",
+  "color": "#7D3C98"
+ },
+ {
+  "id": "memory",
+  "variant": 3,
+  "title": "Memory Match",
+  "variantName": "6×5",
+  "icon": "🃏",
+  "color": "#7D3C98"
+ },
+ {
+  "id": "codebreak",
+  "variant": 0,
+  "title": "Code Breaker",
+  "variantName": "Classic",
+  "icon": "🔐",
+  "color": "#34495E"
+ },
+ {
+  "id": "codebreak",
+  "variant": 1,
+  "title": "Code Breaker",
+  "variantName": "Hard",
+  "icon": "🔐",
+  "color": "#34495E"
+ },
+ {
+  "id": "echo",
+  "variant": 0,
+  "title": "Echo",
+  "variantName": "Normal",
+  "icon": "🔊",
+  "color": "#7B3FBF"
+ },
+ {
+  "id": "echo",
+  "variant": 1,
+  "title": "Echo",
+  "variantName": "Fast",
+  "icon": "🔊",
+  "color": "#7B3FBF"
+ },
+ {
+  "id": "hangman",
+  "variant": 0,
+  "title": "Hangman",
+  "variantName": "Animals",
+  "icon": "🪢",
+  "color": "#8C5A2B"
+ },
+ {
+  "id": "hangman",
+  "variant": 1,
+  "title": "Hangman",
+  "variantName": "Countries",
+  "icon": "🪢",
+  "color": "#8C5A2B"
+ },
+ {
+  "id": "hangman",
+  "variant": 2,
+  "title": "Hangman",
+  "variantName": "Food",
+  "icon": "🪢",
+  "color": "#8C5A2B"
+ },
+ {
+  "id": "hangman",
+  "variant": 3,
+  "title": "Hangman",
+  "variantName": "Mixed",
+  "icon": "🪢",
+  "color": "#8C5A2B"
+ },
+ {
+  "id": "match3",
+  "variant": 0,
+  "title": "Gem Swap",
+  "variantName": "Timed",
+  "icon": "💎",
+  "color": "#1F6FB2"
+ },
+ {
+  "id": "match3",
+  "variant": 1,
+  "title": "Gem Swap",
+  "variantName": "Moves",
+  "icon": "💎",
+  "color": "#1F6FB2"
+ },
+ {
+  "id": "whack",
+  "variant": 0,
+  "title": "Whack-a-Mole",
+  "variantName": "Normal",
+  "icon": "🔨",
+  "color": "#6B8E23"
+ },
+ {
+  "id": "whack",
+  "variant": 1,
+  "title": "Whack-a-Mole",
+  "variantName": "Fast",
+  "icon": "🔨",
+  "color": "#6B8E23"
+ },
+ {
+  "id": "math",
+  "variant": 0,
+  "title": "Math Quiz",
+  "variantName": "Addition",
+  "icon": "➗",
+  "color": "#C0392B"
+ },
+ {
+  "id": "math",
+  "variant": 1,
+  "title": "Math Quiz",
+  "variantName": "Subtraction",
+  "icon": "➗",
+  "color": "#C0392B"
+ },
+ {
+  "id": "math",
+  "variant": 2,
+  "title": "Math Quiz",
+  "variantName": "Multiplication",
+  "icon": "➗",
+  "color": "#C0392B"
+ },
+ {
+  "id": "math",
+  "variant": 3,
+  "title": "Math Quiz",
+  "variantName": "Mixed",
+  "icon": "➗",
+  "color": "#C0392B"
+ },
+ {
+  "id": "guess",
+  "variant": 0,
+  "title": "Number Guess",
+  "variantName": "1–100",
+  "icon": "🔢",
+  "color": "#2C7A7B"
+ },
+ {
+  "id": "guess",
+  "variant": 1,
+  "title": "Number Guess",
+  "variantName": "1–1000",
+  "icon": "🔢",
+  "color": "#2C7A7B"
+ },
+ {
+  "id": "reaction",
+  "variant": 0,
+  "title": "Reaction Time",
+  "variantName": "",
+  "icon": "⚡",
+  "color": "#D4A017"
+ },
+ {
+  "id": "nonogram",
+  "variant": 0,
+  "title": "Picture Logic",
+  "variantName": "5×5",
+  "icon": "🧩",
+  "color": "#4B5D8C"
+ },
+ {
+  "id": "nonogram",
+  "variant": 1,
+  "title": "Picture Logic",
+  "variantName": "10×10",
+  "icon": "🧩",
+  "color": "#4B5D8C"
+ },
+ {
+  "id": "pegs",
+  "variant": 0,
+  "title": "Peg Solitaire",
+  "variantName": "English Cross",
+  "icon": "📍",
+  "color": "#9C6B30"
+ },
+ {
+  "id": "pegs",
+  "variant": 1,
+  "title": "Peg Solitaire",
+  "variantName": "Triangle",
+  "icon": "📍",
+  "color": "#9C6B30"
+ },
+ {
+  "id": "hanoi",
+  "variant": 0,
+  "title": "Tower Puzzle",
+  "variantName": "4 Disks",
+  "icon": "🗼",
+  "color": "#5D6D7E"
+ },
+ {
+  "id": "hanoi",
+  "variant": 1,
+  "title": "Tower Puzzle",
+  "variantName": "5 Disks",
+  "icon": "🗼",
+  "color": "#5D6D7E"
+ },
+ {
+  "id": "hanoi",
+  "variant": 2,
+  "title": "Tower Puzzle",
+  "variantName": "6 Disks",
+  "icon": "🗼",
+  "color": "#5D6D7E"
  }
 ]
