@@ -14,7 +14,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 import android.view.KeyEvent;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -31,6 +33,8 @@ public class MainActivity extends Activity {
 
     private static final int TAB_APPS = 0;
     private static final int TAB_APKS = 1;
+    private static final int TAB_GAMES = 2;
+    private static final long WEATHER_REFRESH_MS = 30L * 60 * 1000;
 
     private static final String PREFS = "launcher";
     private static final String KEY_HIDDEN = "hidden";
@@ -45,6 +49,16 @@ public class MainActivity extends Activity {
     private TextView empty;
     private TextView tabApps;
     private TextView tabApks;
+    private TextView tabGames;
+    private TextView weatherView;
+    private List<AppEntry> games = new ArrayList<>();
+    private boolean weatherLoading;
+    private final Runnable weatherTick = new Runnable() {
+        @Override public void run() {
+            refreshWeather(true);
+            main.postDelayed(this, WEATHER_REFRESH_MS);
+        }
+    };
     private AppAdapter adapter;
     private View highlighted;
 
@@ -68,6 +82,8 @@ public class MainActivity extends Activity {
         empty = findViewById(R.id.empty);
         tabApps = findViewById(R.id.tab_apps);
         tabApks = findViewById(R.id.tab_apks);
+        tabGames = findViewById(R.id.tab_games);
+        weatherView = findViewById(R.id.weather);
         View settings = findViewById(R.id.settings);
 
         adapter = new AppAdapter(getLayoutInflater(), grid);
@@ -95,8 +111,10 @@ public class MainActivity extends Activity {
         // TV style: moving onto a tab switches to it.
         tabApps.setOnFocusChangeListener((v, f) -> { if (f) selectTab(TAB_APPS); });
         tabApks.setOnFocusChangeListener((v, f) -> { if (f) selectTab(TAB_APKS); });
+        tabGames.setOnFocusChangeListener((v, f) -> { if (f) selectTab(TAB_GAMES); });
         tabApps.setOnClickListener(v -> focusGrid());
         tabApks.setOnClickListener(v -> focusGrid());
+        tabGames.setOnClickListener(v -> focusGrid());
         settings.setOnClickListener(v -> showLauncherMenu());
 
         IntentFilter filter = new IntentFilter();
@@ -110,6 +128,22 @@ public class MainActivity extends Activity {
         selectTab(TAB_APPS);
         reload();
         grid.requestFocus();
+
+        String cached = prefs.getString(Weather.KEY_TEXT, "");
+        weatherView.setText(cached);
+        weatherView.setVisibility(cached.isEmpty() ? View.GONE : View.VISIBLE);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        main.post(weatherTick);
+    }
+
+    @Override
+    protected void onStop() {
+        main.removeCallbacks(weatherTick);
+        super.onStop();
     }
 
     @Override
@@ -160,11 +194,14 @@ public class MainActivity extends Activity {
         final boolean showSystem = prefs.getBoolean(KEY_SHOW_SYSTEM, false);
         final Set<String> hidden = new HashSet<>(prefs.getStringSet(KEY_HIDDEN, new HashSet<>()));
         final Context ctx = getApplicationContext();
+        final boolean needGames = games.isEmpty();
         executor.execute(() -> {
             List<AppEntry> apps = AppLoader.load(ctx, showSystem, hidden);
+            List<AppEntry> loadedGames = needGames ? GameCatalog.load(ctx) : null;
             main.post(() -> {
                 if (gen != loadGeneration || isFinishing()) return;
                 allApps = apps;
+                if (loadedGames != null && games.isEmpty()) games = loadedGames;
                 applyTab();
             });
         });
@@ -183,21 +220,27 @@ public class MainActivity extends Activity {
     private void updateTabViews() {
         tabApps.setSelected(currentTab == TAB_APPS);
         tabApks.setSelected(currentTab == TAB_APKS);
+        tabGames.setSelected(currentTab == TAB_GAMES);
     }
 
     private void applyTab() {
         AppEntry previous = (AppEntry) grid.getSelectedItem();
 
         List<AppEntry> shown = new ArrayList<>();
-        for (AppEntry a : allApps) {
-            if ((currentTab == TAB_APKS) == a.sideloaded) shown.add(a);
+        if (currentTab == TAB_GAMES) {
+            shown.addAll(games);
+        } else {
+            for (AppEntry a : allApps) {
+                if ((currentTab == TAB_APKS) == a.sideloaded) shown.add(a);
+            }
         }
         adapter.setItems(shown);
 
         boolean hasItems = !shown.isEmpty();
         grid.setFocusable(hasItems);
         empty.setVisibility(hasItems ? View.GONE : View.VISIBLE);
-        empty.setText(currentTab == TAB_APKS ? R.string.empty_apks : R.string.empty_apps);
+        empty.setText(currentTab == TAB_APKS ? R.string.empty_apks
+                : currentTab == TAB_GAMES ? R.string.empty_games : R.string.empty_apps);
 
         // Keep the cursor on the same app after a refresh.
         if (previous != null) {
@@ -239,6 +282,12 @@ public class MainActivity extends Activity {
     // ---------------------------------------------------------------- actions
 
     private void launch(AppEntry app) {
+        if (app.gameId != null) {
+            startActivity(new Intent(this, GameActivity.class)
+                    .putExtra(GameActivity.EXTRA_GAME, app.gameId)
+                    .putExtra(GameActivity.EXTRA_VARIANT, app.gameVariant));
+            return;
+        }
         Intent intent = new Intent(Intent.ACTION_MAIN)
                 .setComponent(app.component)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
@@ -256,6 +305,10 @@ public class MainActivity extends Activity {
     }
 
     private void showAppOptions(AppEntry app) {
+        if (app.gameId != null) {
+            launch(app);
+            return;
+        }
         String[] options = {"Open", "App info", "Uninstall", "Hide from launcher"};
         new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert)
                 .setTitle(app.label)
@@ -277,7 +330,10 @@ public class MainActivity extends Activity {
                 "Android TV settings",
                 (showSystem ? "Hide" : "Show") + " preinstalled system apps",
                 "Unhide apps (" + hiddenCount + " hidden)",
-                "Choose default home app"
+                "Choose default home app",
+                "Weather location: " + (prefs.getString(Weather.KEY_CITY, "").isEmpty()
+                        ? "Auto" : prefs.getString(Weather.KEY_CITY, "")),
+                "Temperature: " + (prefs.getBoolean(Weather.KEY_FAHRENHEIT, false) ? "°F" : "°C")
         };
         new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert)
                 .setTitle(R.string.app_name)
@@ -297,8 +353,66 @@ public class MainActivity extends Activity {
                                 safeStart(new Intent(Settings.ACTION_SETTINGS));
                             }
                             break;
+                        case 4: askCity(); break;
+                        case 5:
+                            prefs.edit().putBoolean(Weather.KEY_FAHRENHEIT,
+                                    !prefs.getBoolean(Weather.KEY_FAHRENHEIT, false)).apply();
+                            refreshWeather(false);
+                            break;
                     }
                 })
+                .show();
+    }
+
+    // ---------------------------------------------------------------- weather
+
+    private void refreshWeather(boolean onlyIfStale) {
+        long age = System.currentTimeMillis() - prefs.getLong(Weather.KEY_TIME, 0);
+        if (weatherLoading || (onlyIfStale && age < WEATHER_REFRESH_MS)) return;
+        weatherLoading = true;
+        executor.execute(() -> {
+            String text;
+            boolean ok;
+            try {
+                text = Weather.fetch(prefs);
+                ok = true;
+            } catch (Exception e) {
+                text = e.getMessage() != null && e.getMessage().startsWith("City not found")
+                        ? e.getMessage() : null;
+                ok = false;
+            }
+            final String shown = text;
+            final boolean success = ok;
+            main.post(() -> {
+                weatherLoading = false;
+                if (shown != null) {
+                    weatherView.setText(shown);
+                    weatherView.setVisibility(View.VISIBLE);
+                } else if (!success && weatherView.getText().length() == 0) {
+                    weatherView.setVisibility(View.GONE); // offline: just hide it
+                }
+            });
+        });
+    }
+
+    private void askCity() {
+        EditText input = new EditText(this);
+        input.setSingleLine(true);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
+        input.setHint("City, e.g. Mumbai (leave empty for automatic)");
+        input.setText(prefs.getString(Weather.KEY_CITY, ""));
+        new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert)
+                .setTitle("Weather location")
+                .setView(input)
+                .setPositiveButton("Save", (d, w) -> {
+                    prefs.edit().putString(Weather.KEY_CITY, input.getText().toString().trim()).apply();
+                    refreshWeather(false);
+                })
+                .setNeutralButton("Automatic", (d, w) -> {
+                    prefs.edit().putString(Weather.KEY_CITY, "").apply();
+                    refreshWeather(false);
+                })
+                .setNegativeButton("Cancel", null)
                 .show();
     }
 

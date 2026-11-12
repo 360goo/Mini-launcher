@@ -12,6 +12,9 @@ final class AppEntry {
     final Drawable icon;
     final boolean sideloaded;
     final boolean system;
+    /** Non-null for built-in games: the game id inside assets/games. */
+    final String gameId;
+    final int gameVariant;
 
     AppEntry(String packageName, ComponentName component, String label, Drawable banner,
              Drawable icon, boolean sideloaded, boolean system) {
@@ -22,5 +25,20 @@ final class AppEntry {
         this.icon = icon;
         this.sideloaded = sideloaded;
         this.system = system;
+        this.gameId = null;
+        this.gameVariant = 0;
+    }
+
+    /** A built-in offline game tile. */
+    AppEntry(String gameId, int variant, String label, Drawable banner) {
+        this.packageName = "game:" + gameId + ":" + variant;
+        this.component = null;
+        this.label = label;
+        this.banner = banner;
+        this.icon = null;
+        this.sideloaded = false;
+        this.system = false;
+        this.gameId = gameId;
+        this.gameVariant = variant;
     }
 }

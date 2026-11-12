@@ -2,13 +2,18 @@
 
 A tiny, ad-free home screen for Google TV / Android TV.
 
-- **No ads, no recommendations, no internet permission.** Just your apps.
-- **Big clock + date** at the top.
+- **No ads, no recommendations, no tracking.** Just your apps.
+- **Big clock + date + weather** at the top. Weather comes from [Open-Meteo](https://open-meteo.com)
+  (free, no API key); location is detected automatically from your IP, or set a city in the ⚙ menu.
+  Internet is used for nothing else.
 - **Apps** tab: everything you installed from the Play Store.
 - **APKs** tab: everything you sideloaded (installed from an APK file, via Downloader, a file manager, `adb`, etc.).
+- **Games** tab: 100 built-in offline games (36 different games, many with several difficulty/size
+  versions), all playable with the remote's D-pad. Best scores are saved. Back exits a game.
 - System / preinstalled apps are hidden (can be turned on from the ⚙ menu).
 - Long-press OK (or press Menu) on an app: Open · App info · Uninstall · Hide.
-- ⚙ menu: open Android TV settings, show/hide preinstalled apps, unhide apps, pick default home app.
+- ⚙ menu: open Android TV settings, show/hide preinstalled apps, unhide apps, pick default home app,
+  weather city, °C/°F.
 
 ## Get the APK
 
@@ -56,6 +61,13 @@ Notes:
 - A system update may re-enable the stock launcher; just run the commands again.
 - If you'd rather not disable anything, a button-remapping app (e.g. "Button Mapper") can send the Home
   button to Mini Launcher instead.
+
+## Games
+
+The games are plain HTML5/JavaScript in `app/src/main/assets/games/` (`engine.js` + `g_*.js`),
+run in a WebView with network access blocked. `node tools/test-games.js` smoke-tests every game in
+headless Chromium and regenerates `catalog.json`, which the launcher reads to build the Games tab.
+To try them on a computer, open `index.html#snake/0` in a browser (arrow keys + Enter).
 
 ## How "APK" apps are detected
 

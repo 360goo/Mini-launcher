@@ -41,6 +41,17 @@
                 android:format24Hour="EEEE, d MMMM"
                 android:textColor="@color/text_dim"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/text_dim"
+                android:textSize="16sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -61,6 +72,12 @@
                 style="@style/Tab"
                 android:layout_marginStart="8dp"
                 android:text="@string/tab_apks" />
+
+            <TextView
+                android:id="@+id/tab_games"
+                style="@style/Tab"
+                android:layout_marginStart="8dp"
+                android:text="@string/tab_games" />
 
             <ImageView
                 android:id="@+id/settings"

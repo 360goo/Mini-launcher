@@ -1,0 +1,34 @@
+[
+ {
+  "id": "snake",
+  "variant": 0,
+  "title": "Snake",
+  "variantName": "Classic",
+  "icon": "🐍",
+  "color": "#2E8B57"
+ },
+ {
+  "id": "snake",
+  "variant": 1,
+  "title": "Snake",
+  "variantName": "No Walls",
+  "icon": "🐍",
+  "color": "#2E8B57"
+ },
+ {
+  "id": "snake",
+  "variant": 2,
+  "title": "Snake",
+  "variantName": "Speed",
+  "icon": "🐍",
+  "color": "#2E8B57"
+ },
+ {
+  "id": "snake",
+  "variant": 3,
+  "title": "Snake",
+  "variantName": "Obstacles",
+  "icon": "🐍",
+  "color": "#2E8B57"
+ }
+]
